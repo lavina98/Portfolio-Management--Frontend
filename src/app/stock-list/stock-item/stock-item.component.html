@@ -1,0 +1,28 @@
+<div class="container">
+  <ul class="list-inline" (click)="changePath()">
+      <li class="list-inline-item">{{currstock.id}}</li>
+      <li class="list-inline-item">{{currstock.name}}</li>
+      <li class="list-inline-item">{{currstock.marketName}}</li>
+      <li class="list-inline-item">{{currstock.currentPrice}}</li>
+      <li  class="list-inline-item"><button type="button" (click)="addStock()">ADD</button></li>
+    </ul>
+</div>
+<div *ngIf="add">
+  <form  #f="ngForm" (ngSubmit)="confirmAdd(f)">
+    <div class="form-group-item">
+          <label for="portfolioId">Enter portfolioId</label>
+          <input type="number" id="portfolioId" name="portfolioId" ngModel>
+      </div>
+    <div class="form-group-item">
+      <label for="quantity">Enter Quantity</label>
+      <input type="number" id="quantity" name="quantity" ngModel>
+    </div>
+    <div class="form-group-item">
+      <label for="buyingPrice">Enter Buying Price</label>
+      <input type="number" id="buyingPrice" name="buyingPrice" ngModel>
+    </div>
+    <div class="form-group-item">
+       <button type="submit">confirm</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link" routerLink=''>Home </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link  dropdown dropdown-toggle"  role="button"  appDropdown dropdown>
+            Portfolio
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu"> 
+            <li class="dropdown-item">Add Portfolio</li>
+            <li class="dropdown-item">Remove Portfolio</li>
+          </ul>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink='/stocks'> Stocks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Transactions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Help</a>
+        </li>
+      
+        
+      </ul>
+    </div>
+  </nav>
+  
+  

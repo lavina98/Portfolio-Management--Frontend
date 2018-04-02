@@ -1,0 +1,10 @@
+<div class="container">
+    <ul class="list-inline">
+        <li class="list-inline-item">Name</li>
+        <li class="list-inline-item">MarketName</li>
+        <li class="list-inline-item">CurrentPrice</li>
+    </ul>
+    <app-stock-item *ngFor="let stock of list"[currstock]="stock" >
+    </app-stock-item>
+    <router-outlet></router-outlet>
+</div>
