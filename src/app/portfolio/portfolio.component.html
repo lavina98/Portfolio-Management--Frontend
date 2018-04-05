@@ -1,13 +1,6 @@
-<button type="button" (click)="editEnable()" >Edit </button>
-<div *ngIf="edit">
-    <p>click stock you want to delete</p>
-</div>
+
 <p>Portfolio id {{portfolio.id}}</p>
 
-<app-userstockitem *ngFor="let ustocks of portfolio.listOfStocks" [currUserStock]="ustocks" 
-    [editOpt]="edit">
+<app-userstockitem *ngFor="let ustocks of portfolio.listOfStocks" [currUserStock]="ustocks" >
 </app-userstockitem>
 <p>Portfolio networth  {{portfolio.networth}}</p>
-<div *ngIf="edit">
-    <button type="submit" (click)="editDisable()">Done</button>
-</div>

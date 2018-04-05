@@ -22,14 +22,5 @@ export class StockItemComponent implements OnInit {
   {
     this.router.navigate(['/stocks',this.currstock.id]);
   }
-  addStock()
-  {
-      this.add=true;
-  }
-  confirmAdd(form:NgForm)
-  {
-    console.log(form.value);
-    this.investmentService.addStocktoPortfolio(this.currstock,form.value);
-  }
 
 }

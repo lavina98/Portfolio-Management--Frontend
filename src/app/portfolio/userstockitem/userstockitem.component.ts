@@ -10,7 +10,6 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class UserstockitemComponent implements OnInit {
   @Input() currUserStock:UserStock;
-  @Input() editOpt:boolean;
   portfolioId:number;
   constructor(private investmentService:InvestmentService,private active:ActivatedRoute) { }
 
@@ -22,13 +21,6 @@ export class UserstockitemComponent implements OnInit {
         this.portfolioId=+param['pid'];
       }
     )
-  }
-  deleteStock()
-  {
-    if (this.editOpt==true)
-    {
-        this.investmentService.deleteStock(this.portfolioId,this.currUserStock);
-    }
   }
 
 }

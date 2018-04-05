@@ -1,0 +1,15 @@
+<ul class="list-inline" (click)="pathChange()">
+  <div *ngIf="delete">
+  <button type="submit" (click)="deleteItem()">X</button>
+  </div>
+  <li class="list-inline-item">{{transaction.transactionId}}</li>
+  <li class="list-inline-item">{{transaction.portfolioId}}</li>
+  <li class="list-inline-item">{{transaction.type}}</li>
+  <!-- <li>{{transaction.stock.id}}</li> -->
+  <li class="list-inline-item">{{transaction.stock.name}}</li>
+  <!-- <li>{{transaction.stock.marketName}}</li> -->
+  <li class="list-inline-item">{{transaction.stock.currentPrice}}</li>
+  <!-- <li>{{transaction.stock.type}}</li> -->
+  <li class="list-inline-item">{{transaction.price}}</li>
+  <li class="list-inline-item">{{transaction.quatity}}</li>
+</ul>

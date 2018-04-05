@@ -1,5 +1,5 @@
 <button type="submit" (click)="createPortfolio()">Create new Porfolio</button>
-
+<button type="submit" (click)="deletePortfolio()">Delete Porfolio</button>
 <div *ngIf="create">
                 <form  #f="ngForm" (ngSubmit)="createP(f)">
                         <div class="form-group-item">
@@ -13,6 +13,9 @@
         <li class="list-inline-item">portfolio.id</li>
         <li class="list-inline-item">portfolio.networth</li>
  </ul>
-<app-portfolio-item *ngFor="let p of portfolioList" [portfolio]="p">
+<app-portfolio-item *ngFor="let p of portfolioList" [portfolio]="p" [delete]="delete">
 
 </app-portfolio-item>
+<div *ngIf="delete">
+        <button type="submit" (click)="deleteDone()" >Done</button>
+</div>

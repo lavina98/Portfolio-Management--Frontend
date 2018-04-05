@@ -15,6 +15,10 @@ export class StockService
       }
       getStock(id:number)
       {
-            return this.list[id];
+           for(let i=0;i<this.list.length;i++)
+           {
+                if(id==this.list[i].id)
+                    return this.list[i];
+           }
       }
 }

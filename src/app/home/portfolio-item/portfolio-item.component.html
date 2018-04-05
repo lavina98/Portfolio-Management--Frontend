@@ -1,3 +1,6 @@
+<div *ngIf="delete">
+  <button type="submit" (click)="deletePortfolio()">X</button>
+</div>
 <ul class="list-inline" (click)="pathChange()">
     <li class="list-inline-item">{{portfolio.id}}</li>
     <li class="list-inline-item">{{portfolio.networth}}</li>

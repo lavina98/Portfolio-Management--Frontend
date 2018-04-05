@@ -32,4 +32,8 @@ export class HomeComponent implements OnInit {
   {
     this.delete=true;
   }
+  deleteDone()
+  {
+    this.delete=false;
+  }
 }

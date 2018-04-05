@@ -1,0 +1,32 @@
+<button (click)="addOn()">Add Transaction </button>
+<button (click)="deleteOn()">Delete Transaction </button>
+<div *ngIf="add">
+    <form #f="ngForm" (ngSubmit)="addDone(f)">
+        <p>Transaction ID : {{id}}</p>
+        <label for="pid" >Enter portfolio Id</label>
+        <select name="pid" id="pid" ngModel>
+            <option *ngFor="let p of portfolioArr" [value]="p.id">{{p.id}}</option>
+        </select>
+        <label for="type" >Enter type of Transaction</label>
+        <select name="type" id="type"  ngModel>
+            <option value="buy" (click)="buying()">Buy</option>
+            <option value="sell" (click)="selling()">Sell</option>
+        </select>
+        <label for="stock" >Select Stock</label>
+        <select name="stock" id="stock"  ngModel>
+                <option *ngFor="let s of stocksArr" [value]="s.id">{{s.name}}</option>
+        </select>
+        <label for="price" >Enter Stock  Price</label>
+        <input type="number" id="price" name="price" ngModel>
+        <label for="quantity" >Enter Stock Quantity</label>
+        <input type="number" id="quantity" name="quantity" ngModel> 
+        <button>Confirm</button>
+    </form>
+</div>
+<div *ngFor="let t of transactionArr">
+<app-transaction-item  [transaction]="t" [delete]="delete">
+    
+</app-transaction-item>
+</div>
+<button *ngIf="delete" type="submit" (click)="deleteDone()">Done</button>
+<router-outlet></router-outlet>

@@ -4,20 +4,19 @@
         <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
           <a class="nav-link" routerLink=''>Home </a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link  dropdown dropdown-toggle"  role="button"  appDropdown dropdown>
-            Portfolio
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu"> 
-            <li class="dropdown-item">Add Portfolio</li>
-            <li class="dropdown-item">Remove Portfolio</li>
+        <li  appDropdown>
+           <a href="#" class="dropdown-toggle" > Portfolio </a>
+            <ul class="dropdown-menu">
+            <li><a href="#">Add Portfolio</a></li>
+            <li><a href="#">Delete Portfolio</a></li>
+            <li><a href="#" >View Portfolio</a></li>
           </ul>
-        </li>
+          </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink='/stocks'> Stocks</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Transactions</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink='/transaction'>Transactions</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Help</a>
@@ -27,5 +26,3 @@
       </ul>
     </div>
   </nav>
-  
-  

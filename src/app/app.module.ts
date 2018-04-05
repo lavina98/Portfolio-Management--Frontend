@@ -15,13 +15,16 @@ import {HttpModule} from '@angular/http';
 import { StockService } from './stock.service';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { UserstockitemComponent } from './portfolio/userstockitem/userstockitem.component';
-import { PortfolioService } from './portfolio.service';
 import { InvestmentService } from './investment.service';
 import { PortfolioItemComponent } from './home/portfolio-item/portfolio-item.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { HeaderComponent } from './header/header.component';
 import { ChartsModule } from 'ng2-charts';
 import { CharttestComponent } from './charttest/charttest.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { TransactionItemComponent } from './transaction/transaction-item/transaction-item.component';
+import { TransactionService } from './transaction.service';
+import { TransactionDetailComponent } from './transaction/transaction-detail/transaction-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +38,10 @@ import { CharttestComponent } from './charttest/charttest.component';
     PortfolioItemComponent,
     DropdownDirective,
     HeaderComponent,
-    CharttestComponent
+    CharttestComponent,
+    TransactionComponent,
+    TransactionItemComponent,
+    TransactionDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +49,11 @@ import { CharttestComponent } from './charttest/charttest.component';
     FormsModule,
     HttpModule,
     ChartsModule,
-    BsDropdownModule.forRoot()
     
   ],
-  providers: [StockService,PortfolioService,InvestmentService],
+  providers: [StockService,
+    InvestmentService,
+    TransactionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

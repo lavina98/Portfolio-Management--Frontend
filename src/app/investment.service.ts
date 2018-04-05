@@ -1,6 +1,9 @@
 import { Portfolio } from "./porfolio.model";
 import { UserStock } from "./user-stock.model";
 import { Stock } from "./stock.model";
+import { Injectable } from "@angular/core";
+import { StockService } from "./stock.service";
+@Injectable()
 export class InvestmentService
 {
     p:Portfolio;
@@ -9,7 +12,7 @@ export class InvestmentService
         new Portfolio(1),
         new Portfolio(2)
     ]
-    constructor()
+    constructor(private stockService:StockService)
     {
         this.portfoliolist[0].listOfStocks=[new UserStock(new Stock(1,'Reliance','BSE',100,'Electricity'),10,30),
                                          new UserStock(new Stock(4,'Godrej','NSE',1000,'Pharmacy'),100,800)]
@@ -26,18 +29,22 @@ export class InvestmentService
     }
     getPortfolio(id:number)
     {
-        return this.portfoliolist[id];
+        for(let i=0;i<this.portfoliolist.length;i++)
+        {
+            if(id==this.portfoliolist[i].id)
+                return this.portfoliolist[i];
+        }
     }
     getAllPortfolios()
     {
         return this.portfoliolist;
     }
-    addStocktoPortfolio(stock:Stock,st:{portfolioId:number,quantity:number,buyingPrice:number})
+    addStocktoPortfolio(stock:Stock,portfolioId:number,quantity:number,buyingPrice:number)
     {
-        this.portfoliolist[st.portfolioId].listOfStocks.push(new UserStock(stock,st.quantity,st.buyingPrice));
-        this.portfoliolist[st.portfolioId].networth+=st.quantity*stock.currentPrice;
+        this.portfoliolist[portfolioId].listOfStocks.push(new UserStock(stock,quantity,buyingPrice));
+        this.portfoliolist[portfolioId].networth+=quantity*stock.currentPrice;
     }
-    deleteStock(portfolioId:number,currUserStock:UserStock)
+    deleteStock(portfolioId:number,id:number,quantity:number)
     {
        let i,j;
        for(i=0;i<this.portfoliolist.length;i++)
@@ -49,11 +56,11 @@ export class InvestmentService
        {
            for(j=0;j<this.portfoliolist[i].listOfStocks.length;j++)
             {
-                if(currUserStock==this.portfoliolist[i].listOfStocks[j])
+                if(id==this.portfoliolist[i].listOfStocks[j].stock.id)
                 {
-                    this.portfoliolist[i].networth-= this.portfoliolist[i].listOfStocks[j].stock.currentPrice
-                                                    *this.portfoliolist[i].listOfStocks[j].quantity;
-                    this.portfoliolist[i].listOfStocks.splice(j,1);
+                    this.portfoliolist[i].listOfStocks[j].quantity-=quantity;
+                    if( this.portfoliolist[i].listOfStocks[j].quantity==0)
+                        this.portfoliolist[i].listOfStocks.splice(j,1);
                     break;
                     
 
