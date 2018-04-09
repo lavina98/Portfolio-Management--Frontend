@@ -1,22 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+<nav class="navbar navbar-expand-lg navbar-dark bg-color">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-          <a class="nav-link" routerLink=''>Home </a>
+          <a class="nav-link" routerLink=''>Home &nbsp;</a>
         </li>
         <li  appDropdown>
-           <a href="#" class="dropdown-toggle" > Portfolio </a>
+           <a href="#" class="dropdown-toggle nav-link" > Portfolio</a>
             <ul class="dropdown-menu">
-            <li><a href="#">Add Portfolio</a></li>
-            <li><a href="#">Delete Portfolio</a></li>
-            <li><a href="#" >View Portfolio</a></li>
+            <li><a href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Portfolio</a></li>
+            <li><a href="#"><i class="fa fa-minus"></i>&nbsp;&nbsp;Delete Portfolio</a></li>
+            <li><a href="#"><i class="fa fa-folder-open-o"></i>&nbsp;&nbsp;View Portfolio</a></li>
           </ul>
           </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink='/stocks'> Stocks</a>
+          <a class="nav-link" routerLink='/stocks'>&nbsp; Stocks&nbsp;</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink='/transaction'>Transactions</a>
+          <a class="nav-link" routerLink='/transaction'>Transactions &nbsp;</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Help</a>

@@ -1,21 +1,38 @@
-<button type="submit" (click)="createPortfolio()">Create new Porfolio</button>
-<button type="submit" (click)="deletePortfolio()">Delete Porfolio</button>
-<div *ngIf="create">
-                <form  #f="ngForm" (ngSubmit)="createP(f)">
-                        <div class="form-group-item">
-                                      <label for="pId">Enter new  portfolioId</label>
-                                      <input type="number" id="pId" name="pId" ngModel>
-                        </div>
-                <button type="submit">Confirm</button>
-                </form>
-</div>
-<ul class="list-inline">
-        <li class="list-inline-item">portfolio.id</li>
-        <li class="list-inline-item">portfolio.networth</li>
- </ul>
-<app-portfolio-item *ngFor="let p of portfolioList" [portfolio]="p" [delete]="delete">
+<div class="cont">
 
-</app-portfolio-item>
-<div *ngIf="delete">
-        <button type="submit" (click)="deleteDone()" >Done</button>
+        <!-- to be routed to the protfolio dropdown -->
+
+        <!-- <button class="btn btn-primary" type="submit" (click)="createPortfolio()">Create new Porfolio</button> -->
+        <!-- <button class="btn btn-danger" type="submit" (click)="deletePortfolio()">Delete Porfolio</button> -->
+        
+        <div class="cont2"*ngIf="create">
+                        <form  #f="ngForm" (ngSubmit)="createP(f)">
+                                <div class="form-group-item">
+                                              <label for="pId">Insert new Portfolio Id : </label>
+                                              <input placeholder="Enter ID here" type="number" id="pId" name="pId" ngModel>
+                                </div>
+                                <button class="btn btn-success" type="submit">Confirm</button>
+                        </form>
+        </div>
+        <p class="ml-3 markleft headings">Portfolio Summary</p>
+        <hr>
+        <div class="ml-3 row">                
+                <div class="col-sm-8">                        
+                        <ul class="list-inline row ">
+                                <li class="list-inline-item col-sm-2 bold text-center">Portfolio ID</li>
+                                <li class="list-inline-item col-sm-3 bold text-center">Networth</li>
+                        </ul>
+                        <app-portfolio-item *ngFor="let p of portfolioList" [portfolio]="p" [delete]="delete">
+                        </app-portfolio-item>
+                </div>
+                <div class="col-sm-3 alerts">
+                        <div class="row" style="background-color:#00007f;color:white;padding-left:10px;height:35px;">
+                                <p class="headings">Alerts</p>
+
+                        </div>
+                </div>
+        </div>
+        <div *ngIf="delete">
+                <button type="submit" (click)="deleteDone()" >Done</button>
+        </div>
 </div>

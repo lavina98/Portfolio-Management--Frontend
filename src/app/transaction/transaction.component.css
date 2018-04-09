@@ -1,0 +1,46 @@
+.btn{
+    font-size:16px;
+    padding:4px;
+    width:30%;
+}
+
+
+.btn2 {
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    font-family: Calibri;
+    color: #ff0000;
+    font-size: 16px;
+    background: #e3e3ff;
+    padding: 4px ;
+    width:30%;
+    border: solid #ff0000 1px;
+    text-decoration: none;
+  }
+  
+  .btn2:hover {
+    background: #fa2a2a;
+    text-decoration: none;
+    color:white;
+  }
+
+  select{
+      width:80px;
+  }
+  .trans{
+      background-color:rgb(247, 247, 247);
+      padding:20px;
+      border: 1px solid #b4b4b4;
+      margin-top:5px;
+  }
+.bord{
+    border:2px solid #0075ac;
+    padding:10px;
+    /* border-radius:3px; */
+    /* margin:2px; */
+}
+.bolder{
+    font-weight:bold;
+    font-size:18px;
+}

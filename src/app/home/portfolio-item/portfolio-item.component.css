@@ -1,0 +1,8 @@
+.row{
+    margin-bottom : 3px !important;
+    border: 1px solid #0075ac;
+    border-radius:3px;
+    line-height:40px;
+    cursor:pointer;
+    margin-right:1px;
+}

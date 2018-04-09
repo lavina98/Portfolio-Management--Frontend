@@ -1,0 +1,26 @@
+.row{
+    margin-left:2px;
+}
+.alt-color{
+    background-color:red;
+}
+.main_grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap:15px;
+    grid-row-gap:15px;
+}
+.stock-down{
+    border:1px solid rgb(204, 0, 0);
+    background: linear-gradient(to bottom, #ff3232, #ff1919);
+    border-radius:4px;
+    color:rgb(240, 240, 240);
+}
+.stock-up{
+    border:1px solid #007300;
+    background: linear-gradient(to bottom,  #329932, #198c19);
+    border-radius:4px;
+    color:rgb(240, 240, 240);
+    box-shadow: 1px 1px 2px #979797;
+}

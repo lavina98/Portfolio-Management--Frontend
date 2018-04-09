@@ -1,32 +1,87 @@
-<button (click)="addOn()">Add Transaction </button>
-<button (click)="deleteOn()">Delete Transaction </button>
-<div *ngIf="add">
+<div class="cont">
+    <p class="headings">Transactions</p>
+    <hr>
+<button class="btn btn-primary" (click)="addOn()"><i class="fa fa-plus"></i>&nbsp; Add Transaction </button>&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="btn2" (click)="deleteOn()"><i class="fa fa-minus-circle"></i>&nbsp; Delete Transaction </button>
+<div class="trans" *ngIf="add">
     <form #f="ngForm" (ngSubmit)="addDone(f)">
-        <p>Transaction ID : {{id}}</p>
-        <label for="pid" >Enter portfolio Id</label>
-        <select name="pid" id="pid" ngModel>
-            <option *ngFor="let p of portfolioArr" [value]="p.id">{{p.id}}</option>
-        </select>
-        <label for="type" >Enter type of Transaction</label>
-        <select name="type" id="type"  ngModel>
-            <option value="buy" (click)="buying()">Buy</option>
-            <option value="sell" (click)="selling()">Sell</option>
-        </select>
-        <label for="stock" >Select Stock</label>
-        <select name="stock" id="stock"  ngModel>
-                <option *ngFor="let s of stocksArr" [value]="s.id">{{s.name}}</option>
-        </select>
-        <label for="price" >Enter Stock  Price</label>
-        <input type="number" id="price" name="price" ngModel>
-        <label for="quantity" >Enter Stock Quantity</label>
-        <input type="number" id="quantity" name="quantity" ngModel> 
-        <button>Confirm</button>
+        <p><strong>Transaction ID : {{id}}</strong></p>
+        <div class="row">
+            <div class="col-sm-3"><label for="pid" >Enter portfolio Id</label></div>
+        <div class="col-sm-2">
+                <select name="pid" id="pid" ngModel>
+                        <option *ngFor="let p of portfolioArr" [value]="p.id">{{p.id}}</option>
+                    </select>
+        </div>
+        
+    </div>
+        <div class="row">
+        <div class="col-sm-3">            
+            <label for="type" >Enter type of Transaction</label>
+        </div>
+        <div class="col-sm-2">
+                <select name="type" id="type"  ngModel>
+                        <option value="buy" (click)="buying()">Buy</option>
+                        <option value="sell" (click)="selling()">Sell</option>
+                    </select>
+        </div>
+        </div>
+    
+        <div class="row">
+        <div class="col-sm-3"><label for="stock" >Select Stock</label></div>
+        <div class="col-sm-2">
+                <select name="stock" id="stock"  ngModel>
+                        <option *ngFor="let s of stocksArr" [value]="s.id">{{s.name}}</option>
+                </select>
+        </div>
+        
+    </div>
+        <div class="row">
+        <div class="col-sm-3"><label for="price" >Enter Stock  Price</label></div>
+        <div class="col-sm-2"><input type="number" id="price" name="price" ngModel></div>
+        </div>
+        
+        <div class="row mt-1">
+        <div class="col-sm-3"><label for="quantity" >Enter Stock Quantity</label></div>
+        <div class="col-sm-2"><input type="number" id="quantity" name="quantity" ngModel> </div>
+        </div>
+        <br>
+        <button class="btn btn-success">Confirm</button>
     </form>
 </div>
-<div *ngFor="let t of transactionArr">
-<app-transaction-item  [transaction]="t" [delete]="delete">
-    
-</app-transaction-item>
+<div class="bord mt-4 ">
+    <div class="row ">
+        <div class="col-sm-1 bolder text-center">
+            TransactionId
+        </div>
+        <div class="col-sm-2 bolder text-center">
+            Portfolio Id
+        </div>
+        <div class="col-sm-2 bolder text-center">
+            Transaction Type
+        </div>
+        <div class="col-sm-2 bolder text-center">
+            Stock Name
+        </div>
+        <div class="col-sm-2 bolder text-center">
+            Current Price
+        </div>
+        <div class="col-sm-1 bolder text-center">
+            T. Price
+        </div>
+        <div class="col-sm-1 bolder text-center">
+            Quantity
+        </div>
+        <div class="col-sm-1 bolder text-center" *ngIf="delete">
+            Delete
+        </div>
+    </div>
+    <div *ngFor="let t of transactionArr">
+            <app-transaction-item  [transaction]="t" [delete]="delete">
+                
+            </app-transaction-item>
+    </div>
 </div>
-<button *ngIf="delete" type="submit" (click)="deleteDone()">Done</button>
+<button class="btn btn-success mt-5" *ngIf="delete" type="submit" (click)="deleteDone()">Done</button>
 <router-outlet></router-outlet>
+</div>

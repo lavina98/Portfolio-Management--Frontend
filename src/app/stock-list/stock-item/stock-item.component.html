@@ -1,8 +1,37 @@
-<div class="container">
-  <ul class="list-inline" (click)="changePath()">
+<div (click)="changePath()">
+    <div class="row ">
+      <div class="col-sm-12 text-center">      
+        <p style="font-size:18px;font-weight:bold">{{currstock.name}}</p>      
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+          <p>Market: {{ currstock.marketName }}</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-6 text-center bottom-rw">
+        <p>Id: {{currstock.id}}</p>
+      </div>
+      <div class="col-sm-6 ">
+        <p>Price: {{currstock.currentPrice}}</p>
+      </div> 
+    </div> 
+    </div>
+      
+    
+  
+  
+  
+  
+  
+  
+  <!-- <ul class="list-inline row alt-color" (click)="changePath()">
       <li class="list-inline-item">{{currstock.id}}</li>
-      <li class="list-inline-item">{{currstock.name}}</li>
-      <li class="list-inline-item">{{currstock.marketName}}</li>
-      <li class="list-inline-item">{{currstock.currentPrice}}</li>
-    </ul>
-</div>
+      <li class="list-inline-item col-sm-3">{{currstock.name}}</li>
+      <li class="list-inline-item col-sm-3">{{currstock.marketName}}</li>
+      <li class="list-inline-item col-sm-3">{{currstock.currentPrice}}</li>
+    </ul> -->
+

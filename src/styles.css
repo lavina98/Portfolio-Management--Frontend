@@ -1,2 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.cont{
+    /* background: rgba(247, 247, 247, 0.7) ; */
+    background:linear-gradient(to bottom right, #e3e3ff 0%, #e5e5ff 30%, #c6c6ff 70%, #bebeff 100%);
+    margin-left: 5%;
+    padding: 15px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px #979797;
+    border:1px solid #bebebe;
+    height:78vh;
+    width:90%;
+    overflow-y:auto;
+}
+.headings{
+    font-size:20px;
+    font-weight:bold;
+}
+.fa{
+    font-size: 12px;
+}

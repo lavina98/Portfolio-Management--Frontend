@@ -1,0 +1,15 @@
+.bg-color{
+    background-color:  #00007f ;
+}
+.navbar{
+    border-radius: 0px;
+    height:40px;
+    box-shadow:0px 1px 1px #1a1a1a;
+}
+li{
+    font-size: 17px;
+}
+.row{
+    width:100%;
+}
+

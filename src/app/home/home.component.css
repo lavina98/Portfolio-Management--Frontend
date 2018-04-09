@@ -1,0 +1,25 @@
+
+.cont2{
+    margin: 10px;
+
+}
+input{
+    padding:2px;
+    width: 200px;
+}
+.btn{
+    font-size: 12px;   
+}
+.markleft{
+    margin-left:-9px;
+}
+.bold{
+    font-weight:bold;
+}
+.alerts{
+    border: 2px solid grey;
+    height:375px;
+    width:200px;
+    margin:0px 20px 0px 30px;
+    overflow-y:auto;
+}
