@@ -1,0 +1,24 @@
+<div style ="text-align:center">
+<h2 class="jumbotron">PORTFOLIO MANAGEMENT</h2>
+</div>
+<div class="col-md-7">
+<form #userform ="ngForm" (ngSubmit)="onSubmit(userform)">
+<div class="form-group">
+<label>Name</label>
+<input class="form-control" name="name" #name="ngModel" [(ngModel)]="us.selectedus.name" placeholder="Full Name">
+<label>E-mail</label>
+<input class="form-control" name="e_mail" #name="ngModel" [(ngModel)]="us.selectedus.e_mail" placeholder="E-mail">
+<label>Username</label>
+<input class="form-control" name="username" #name="ngModel" [(ngModel)]="us.selectedus.username" placeholder="UserName">
+<label>Mobile No</label>
+<input class="form-control" name="mobile" #name="ngModel" [(ngModel)]="us.selectedus.mobile" placeholder="Mobile">
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-default"><i class="fa fa-floppy-o"></i>Submit</button>
+<button type="button" class="btn btn-default" (click)="resetForm(userform)"><i class="fa fa-repeat"></i>Reset</button>
+</div>
+</form>
+</div>
+<div class="col-md-5">
+<app-login></app-login>
+</div>
