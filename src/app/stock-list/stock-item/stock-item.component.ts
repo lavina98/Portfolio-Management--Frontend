@@ -2,7 +2,6 @@ import { Component, OnInit,Input } from '@angular/core';
 import { Stock } from '../../stock.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { InvestmentService } from '../../investment.service';
 
 @Component({
   selector: 'app-stock-item',
@@ -13,14 +12,14 @@ export class StockItemComponent implements OnInit {
 
   @Input() currstock:Stock;
   add:boolean;
-  constructor(private router:Router,private investmentService:InvestmentService) { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
   changePath()
   {
-    this.router.navigate(['/stocks',this.currstock.id]);
+    this.router.navigate(['/stocks',this.currstock.symbol]);
   }
 
 }

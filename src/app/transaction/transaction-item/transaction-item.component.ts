@@ -1,7 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Transaction } from '../../transaction.model';
 import { Router } from '@angular/router';
-import { InvestmentService } from '../../investment.service';
 import { TransactionService } from '../../transaction.service';
 
 @Component({
@@ -12,20 +11,14 @@ import { TransactionService } from '../../transaction.service';
 export class TransactionItemComponent implements OnInit {
   @Input() transaction:Transaction;
   @Input() delete:boolean;
-  constructor(private router:Router,private investmentService:InvestmentService,
-              private transactionServise:TransactionService) { }
+  constructor(private router:Router,private transactionService:TransactionService) { }
 
   ngOnInit() {
   }
-  pathChange()
-  {
-      this.router.navigate(['\transaction',this.transaction.transactionId]);
-  }
   deleteItem()
   {
+    this.transactionService.deleteTransaction(this.transaction.tId).subscribe();
     console.log('Deletion Successful');
-    this.transactionServise.deleteTransaction(this.transaction.transactionId);
-    this.investmentService.deleteStock(this.transaction.portfolioId,this.transaction.stock.id,
-      this.transaction.quantity)
+    
   }
 }

@@ -15,7 +15,6 @@ import {HttpModule} from '@angular/http';
 import { StockService } from './stock.service';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { UserstockitemComponent } from './portfolio/userstockitem/userstockitem.component';
-import { InvestmentService } from './investment.service';
 import { PortfolioItemComponent } from './home/portfolio-item/portfolio-item.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { HeaderComponent } from './header/header.component';
@@ -24,7 +23,12 @@ import { CharttestComponent } from './charttest/charttest.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { TransactionItemComponent } from './transaction/transaction-item/transaction-item.component';
 import { TransactionService } from './transaction.service';
-import { TransactionDetailComponent } from './transaction/transaction-detail/transaction-detail.component';
+import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { UserService } from './user.service';
+import { RegisterComponent } from './register/register.component';
+import { PortfolioService } from './portfolio.service';
+import { UserStockService } from './user-stock.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +45,8 @@ import { TransactionDetailComponent } from './transaction/transaction-detail/tra
     CharttestComponent,
     TransactionComponent,
     TransactionItemComponent,
-    TransactionDetailComponent
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,11 +54,14 @@ import { TransactionDetailComponent } from './transaction/transaction-detail/tra
     FormsModule,
     HttpModule,
     ChartsModule,
+    HttpClientModule
     
   ],
   providers: [StockService,
-    InvestmentService,
-    TransactionService],
+    TransactionService,
+    UserService,
+  PortfolioService,
+  UserStockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

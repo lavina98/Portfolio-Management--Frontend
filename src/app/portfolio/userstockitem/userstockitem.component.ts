@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserStock } from '../../user-stock.model';
-import { InvestmentService } from '../../investment.service';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -11,7 +10,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class UserstockitemComponent implements OnInit {
   @Input() currUserStock:UserStock;
   portfolioId:number;
-  constructor(private investmentService:InvestmentService,private active:ActivatedRoute) { }
+  constructor(private active:ActivatedRoute) { }
 
   ngOnInit() {
     this.portfolioId=+this.active.snapshot.params['pid'];

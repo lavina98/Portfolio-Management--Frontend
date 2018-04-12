@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { InvestmentService } from '../investment.service';
 import { Portfolio } from "../porfolio.model";
 import { NgForm } from '@angular/forms';
+import { PortfolioService } from '../portfolio.service';
+import 'rxjs/Rx';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,10 +14,14 @@ export class HomeComponent implements OnInit {
   delete:boolean;
   portfolioList:Portfolio[];
   id:number;
-  constructor(private investmentService:InvestmentService) { }
+  p:Portfolio=new Portfolio();
+  constructor(private portfolioService:PortfolioService) { }
 
   ngOnInit() {
-    this.portfolioList=this.investmentService.getAllPortfolios();
+    this.portfolioService.getAllPortfolios().subscribe(
+      (data:Portfolio[])=>{this.portfolioList=data;}
+    );
+      
   }
   createPortfolio()
   {
@@ -24,9 +29,12 @@ export class HomeComponent implements OnInit {
   }
   createP(form:NgForm)
   {
-     this.id=form.value.pId;
-     this.investmentService.addPortfolio(this.id);
-     this.create=false;
+    console.log(form);
+    this.p.pName=form.value.pname;
+    this.p.pWorth=0;
+    console.log(this.p);
+    this.portfolioService.addPortfolio(this.p).subscribe();
+    this.create=false;
   }
   deletePortfolio()
   {
@@ -35,5 +43,9 @@ export class HomeComponent implements OnInit {
   deleteDone()
   {
     this.delete=false;
+  }
+  ngOnDestroy()
+  {
+      
   }
 }

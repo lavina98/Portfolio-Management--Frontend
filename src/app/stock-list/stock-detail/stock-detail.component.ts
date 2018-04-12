@@ -10,16 +10,18 @@ import { StockService } from '../../stock.service';
 export class StockDetailComponent implements OnInit {
 
   currstock:Stock;
-  no:number;
+  sy:String;
   constructor(private currRoute:ActivatedRoute,private stockService:StockService) { }
 
   ngOnInit() {
-    this.no=+this.currRoute.snapshot.params['id'];
-    this.currstock=this.stockService.getStock(this.no);
+    this.sy=this.currRoute.snapshot.params['id'];
+   this.stockService.getStock(this.sy).subscribe(
+    (data:Stock) =>{this.currstock=data});
     this.currRoute.params.subscribe(
       (param:Params)=>{
-        this.no=+param['id'];
-        this.currstock=this.stockService.getStock(this.no);
+        this.sy=param['id'];
+        this.stockService.getStock(this.sy).subscribe(
+          (data:Stock) =>{this.currstock=data});
       }
     );
    

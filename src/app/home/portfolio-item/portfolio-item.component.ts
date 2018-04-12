@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Portfolio } from '../../porfolio.model';
 import { Router } from '@angular/router';
-import { InvestmentService } from '../../investment.service';
+import { PortfolioService } from '../../portfolio.service';
 
 @Component({
   selector: 'app-portfolio-item',
@@ -12,16 +12,16 @@ export class PortfolioItemComponent implements OnInit {
 
   @Input() portfolio:Portfolio;
   @Input() delete:boolean;
-  constructor(private router:Router,private investmentService:InvestmentService) { }
+  constructor(private router:Router, private portfolioService:PortfolioService) { }
 
   ngOnInit() {
   }
   pathChange()
   {
-      this.router.navigate(['/portfolio',this.portfolio.id]);
+      this.router.navigate(['/portfolio',this.portfolio.pId]);
   }
   deletePortfolio()
   {
-      this.investmentService.deletePortfolio(this.portfolio.id);
+      this.portfolioService.deletePortfolio(this.portfolio.pId).subscribe();
   }
 }

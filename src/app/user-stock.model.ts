@@ -1,15 +1,16 @@
 import { Stock } from "./stock.model";
+import { Portfolio } from "./porfolio.model";
 
 export class UserStock
 {
-    public stock:Stock;
-    public quantity:number;
-    public buyingPrice:number;
+    sId:number;
+    sName:string;
+    quantity:number;
+    buyingPrice:number;
+    portfolio:Portfolio;
 
-    constructor(stock:Stock,quantity:number,buyingPrice:number)
+    constructor()
     {
-        this.stock=stock;
-        this.quantity=quantity;
-        this.buyingPrice=buyingPrice;
+        
     }
 }

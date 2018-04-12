@@ -1,14 +1,10 @@
 import { UserStock } from "./user-stock.model";
-
+import {User} from "./user.model"
 export class Portfolio
 {
-    id:number;
-    listOfStocks:UserStock[];
-    networth:number;
-    constructor(id:number)
-    {
-        this.id=id;
-        this.listOfStocks=[];
-        this.networth=0;
-    }
+    pId:number;
+    pName:String;
+    pWorth:number;
+    u:User;
+    
 }

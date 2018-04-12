@@ -13,7 +13,13 @@ export class StockListComponent implements OnInit {
   constructor(private stockService:StockService) { }
 
   ngOnInit() {
-    this.list=this.stockService.getStocks();
+    this.stockService.getStocks().subscribe(
+      (data:Stock[])=>{this.list=data;}
+    );
   }
+  //getAllStocks()
+  // {
+    
+  // } 
 
 }

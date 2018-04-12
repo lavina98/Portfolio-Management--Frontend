@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { InvestmentService } from '../investment.service';
 import { Portfolio } from '../porfolio.model';
 
 @Component({
@@ -10,10 +9,10 @@ import { Portfolio } from '../porfolio.model';
 export class HeaderComponent implements OnInit {
 
   plist:Portfolio[];
-  constructor(private investmentservice:InvestmentService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.plist=this.investmentservice.getAllPortfolios();
+    // this.plist=this.investmentservice.getAllPortfolios();
   }
 
 }
