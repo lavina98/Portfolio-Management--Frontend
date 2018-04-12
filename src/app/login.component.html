@@ -1,0 +1,12 @@
+<form #loginform ="ngForm" >
+<div class="form-group">
+<label>Username</label>
+<input class="form-control" name="uname" #name="ngModel" [(ngModel)]=" us.selectedus.username" placeholder="UserName">
+<label>Password</label>
+<input class="form-control" type="password" name="pass" #name="ngModel" [(ngModel)]="us.selectedus.password" placeholder="Password">
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-default"><i class="fa fa-power-off"></i>Login</button>
+<button type="button" class="btn btn-default"><i class="fa fa-user"></i>forgot Password</button>
+</div>
+</form>
