@@ -19,8 +19,9 @@ export class RegisterComponent implements OnInit {
   {
     console.log(userform);
     // this.u.emailId=userform.value.email;
-    this.u.uname=userform.value.uname;
-    this.u.password=userform.value.pass;
+    this.u.uname=userform.value.username;
+    this.u.password=userform.value.password;
     this.userService.addUser(this.u).subscribe();
+    alert("Successful registration login again");
   }
 }

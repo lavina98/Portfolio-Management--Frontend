@@ -53,6 +53,17 @@ export class HomeComponent implements OnInit {
   deleteDone()
   {
     this.delete=false;
+    this.portfolioService.getAllPortfolios().subscribe(
+      (data:Portfolio[])=>{
+        this.portfolioList=data;
+        // this.ref.detectChanges();
+      }
+    );
+
+    
+
+
+
   }
   ngOnDestroy()
   {

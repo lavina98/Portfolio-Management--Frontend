@@ -10,9 +10,9 @@ import { OverallPortDataService } from '../overall-port-data.service';
 })
 export class PiechartComponent implements OnInit {
       // Pie
-    public pieChartLabels:string[];
+    public pieChartLabels:string[]=[];
     // = ['PId: 1', 'PId: 2', 'PId: 3'];
-    public pieChartData:number[]; 
+    public pieChartData:number[]=[]; 
     // = [300, 500, 250];
     public pieChartType:string = 'pie';
    
@@ -30,6 +30,10 @@ export class PiechartComponent implements OnInit {
   ngOnInit() {
     this.overallPortData.getIds().subscribe(
       (data:any) => { this.pieChartLabels = data;}
+    );
+
+    this.overallPortData.getNetWorth().subscribe(
+      (data:any) => { this.pieChartData = data;}
     );
   }
 

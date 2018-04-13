@@ -17,12 +17,12 @@ export class PortfolioService
       {
       //  return this.http.get('//localhost:8080//api/users'+this.userService.getUser().id+'/portfolios').map(
       //       (res:Portfolio[])=>{return res; });
-        return this.http.get('//localhost:8080//api/users/1000/portfolios').map(
+        return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios').map(
              (res:Portfolio[])=>{return res; });
       }
       addPortfolio(p:Portfolio)
       {
-        return this.http.post('//localhost:8080//api/users/1000/portfolios',p).map(
+        return this.http.post('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios',p).map(
           (res:Portfolio)=>
         {
           return res;
@@ -30,7 +30,7 @@ export class PortfolioService
       }
       deletePortfolio(id:number)
       {
-        return this.http.delete('//localhost:8080//api/users/1000/portfolios/'+id).map(
+        return this.http.delete('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/'+id).map(
           (res:Portfolio)=>
         {
           return res;

@@ -18,7 +18,8 @@ export class TransactionItemComponent implements OnInit {
   deleteItem()
   {
     this.transactionService.deleteTransaction(this.transaction.tId).subscribe();
-    console.log('Deletion Successful');
+    //console.log('Deletion Successful');
+
     
   }
 }

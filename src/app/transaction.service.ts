@@ -20,32 +20,32 @@ export class TransactionService {
     getTransactions()
     {
         //replace 1000 by this.userService.getUser().id
-       return this.http.get('//localhost:8080//api/users/1000/transactions').map(
+       return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions').map(
            (data:Transaction[])=>{return data;}
            // this.u=this.userService.getUser();
        )
     }
     addTransaction(t:Transaction )
     {
-        return this.http.post('//localhost:8080//api/users/1000/transactions',t).map(
+        return this.http.post('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions',t).map(
             (data:Transaction)=>{return data;}
         );
     }
     updateTransaction(t:Transaction)
     {
-        return this.http.put('//localhost:8080//api/users/1000/transactions'+t.tId,t).map(
+        return this.http.put('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions'+t.tId,t).map(
             (data:Transaction)=>{return data;}
         );
     }
     deleteTransaction(tid:number)
     {
-        return this.http.delete('//localhost:8080//api/users/1000/transactions/'+tid).map(
+        return this.http.delete('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions/'+tid).map(
             (data:Transaction)=>{return data;}
         );
     }
     getTransaction(tid:number)
     {
-        return this.http.get('//localhost:8080//api/users/1000/transactions/'+tid).map(
+        return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions/'+tid).map(
             (data:Transaction)=>{return data;}
         );
     }

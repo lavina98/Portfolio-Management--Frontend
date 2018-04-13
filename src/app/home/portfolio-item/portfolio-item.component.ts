@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { Portfolio } from '../../porfolio.model';
 import { Router } from '@angular/router';
 import { PortfolioService } from '../../portfolio.service';
@@ -12,7 +12,8 @@ export class PortfolioItemComponent implements OnInit {
 
   @Input() portfolio:Portfolio;
   @Input() delete:boolean;
-  constructor(private router:Router, private portfolioService:PortfolioService) { }
+  constructor(private router:Router, private portfolioService:PortfolioService,
+    private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,8 @@ export class PortfolioItemComponent implements OnInit {
   }
   deletePortfolio()
   {
-      this.portfolioService.deletePortfolio(this.portfolio.pId).subscribe();
+      this.portfolioService.deletePortfolio(this.portfolio.pId).subscribe(
+        (_)=>{this.ref.detectChanges();}
+      );
   }
 }
