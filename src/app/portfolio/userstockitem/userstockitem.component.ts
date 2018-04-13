@@ -13,13 +13,13 @@ export class UserstockitemComponent implements OnInit {
   constructor(private active:ActivatedRoute) { }
 
   ngOnInit() {
-    this.portfolioId=+this.active.snapshot.params['pid'];
-    this.active.params.subscribe(
-      (param:Params)=>
-      {
-        this.portfolioId=+param['pid'];
-      }
-    )
+    // this.portfolioId=+this.active.snapshot.params['pid'];
+    // this.active.params.subscribe(
+    //   (param:Params)=>
+    //   {
+    //     this.portfolioId=+param['pid'];
+    //   }
+    // )
   }
 
 }

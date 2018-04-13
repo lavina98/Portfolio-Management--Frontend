@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Portfolio } from "../porfolio.model";
 import { NgForm } from '@angular/forms';
 import { PortfolioService } from '../portfolio.service';
@@ -15,7 +15,10 @@ export class HomeComponent implements OnInit {
   portfolioList:Portfolio[];
   id:number;
   p:Portfolio=new Portfolio();
-  constructor(private portfolioService:PortfolioService) { }
+  constructor(
+    private portfolioService:PortfolioService,
+    private ref: ChangeDetectorRef  
+  ) { }
 
   ngOnInit() {
     this.portfolioService.getAllPortfolios().subscribe(
@@ -33,7 +36,14 @@ export class HomeComponent implements OnInit {
     this.p.pName=form.value.pname;
     this.p.pWorth=0;
     console.log(this.p);
-    this.portfolioService.addPortfolio(this.p).subscribe();
+    this.portfolioService.addPortfolio(this.p).subscribe((_) => {
+      this.portfolioService.getAllPortfolios().subscribe(
+        (data:Portfolio[])=>{
+          this.portfolioList=data;
+          // this.ref.detectChanges();
+        }
+      );
+    });
     this.create=false;
   }
   deletePortfolio()

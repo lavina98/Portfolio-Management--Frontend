@@ -1,5 +1,5 @@
 <div class="cont">
-    <p class="headings">Portfolio Summary, ID : {{portfolio.id}}</p>
+    <p class="headings">Portfolio Summary, ID : {{pid}}</p>
     <hr>
     <div class="bord">
         <div class="row">
@@ -11,10 +11,10 @@
             <div class="col-sm-1 bold">Curr Price</div>
 
         </div>
-        <app-userstockitem *ngFor="let ustocks of portfolio.listOfStocks" [currUserStock]="ustocks" >
+        <app-userstockitem *ngFor="let ustocks of listOfuStocks" [currUserStock]="ustocks" >
         </app-userstockitem>
     </div>
-    <p style="font-weight:bold;margin-top: 20px;">PORTFOLIO NETWORTH : {{portfolio.networth}}</p>
+    <p style="font-weight:bold;margin-top: 20px;">PORTFOLIO NETWORTH : </p>
 
     
 </div>

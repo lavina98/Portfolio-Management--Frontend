@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(userform:NgForm)
   {
     console.log(userform);
-    this.u.emailId=userform.value.email;
+    // this.u.emailId=userform.value.email;
     this.u.uname=userform.value.uname;
     this.u.password=userform.value.pass;
     this.userService.addUser(this.u).subscribe();

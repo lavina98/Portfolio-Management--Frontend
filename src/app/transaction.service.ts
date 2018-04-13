@@ -19,6 +19,7 @@ export class TransactionService {
          
     getTransactions()
     {
+        //replace 1000 by this.userService.getUser().id
        return this.http.get('//localhost:8080//api/users/1000/transactions').map(
            (data:Transaction[])=>{return data;}
            // this.u=this.userService.getUser();
