@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
     this.portfolioService.getAllPortfolios().subscribe(
       (data:Portfolio[])=>{this.portfolioList=data;}
     );
+    // this.portfolioService.calculateNetworth(this.portfolio.pId).subscribe(
+    //   (data:number)=>{this.portfolio.pWorth=data;}
+    // )
       
   }
   createPortfolio()

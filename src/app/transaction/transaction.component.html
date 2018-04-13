@@ -2,7 +2,7 @@
     <p class="headings">Transactions</p>
     <hr>
 <button class="btn btn-primary" (click)="addOn()"><i class="fa fa-plus"></i>&nbsp; Add Transaction </button>&nbsp;&nbsp;&nbsp;&nbsp;
-<button class="btn2" (click)="deleteOn()"><i class="fa fa-minus-circle"></i>&nbsp; Delete Transaction </button>
+<!-- <button class="btn2" (click)="deleteOn()"><i class="fa fa-minus-circle"></i>&nbsp; Delete Transaction </button> -->
 <div class="trans" *ngIf="add">
     <form #f="ngForm" (ngSubmit)="addmidDone(f)">
         <p><strong>Transaction ID : {{id}}</strong></p>

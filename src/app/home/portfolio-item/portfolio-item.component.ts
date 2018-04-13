@@ -16,6 +16,9 @@ export class PortfolioItemComponent implements OnInit {
     private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
+      this.portfolioService.calculateNetworth(this.portfolio.pId).subscribe(
+        (data:number)=>{this.portfolio.pWorth=data;}
+      )
   }
   pathChange()
   {

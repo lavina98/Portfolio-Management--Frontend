@@ -36,5 +36,12 @@ export class PortfolioService
           return res;
         });
       }
+      calculateNetworth(pid:number)
+      {
+        return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/'+pid)
+        .map(
+          (data:number)=>{return data;}
+        );
+      }
 
 }

@@ -125,6 +125,9 @@ export class TransactionComponent implements OnInit {
   deleteDone(f:NgForm)
   {
     this.delete=false;
+    this.transactionService.getTransactions().subscribe(
+      (data:Transaction[])=>{this.transactionArr=data;}
+    );
   }
 
 }
