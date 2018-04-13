@@ -1,11 +1,19 @@
+<div class="boxed ">
+  <p style="font-size:20px;font-weight:bold;" class="text-center">LOGIN</p>
+  <br>
 <form #f="ngForm" (ngSubmit)="login(f)">
   <div class="form-group">
-  <label for="uname">Username</label>
-  <input type="text" class="form-control" name="uname" id="uname" ngModel >
+  <label for="uname" >Username</label>
+  <input placeholder="&#xf2c0;&nbsp;&nbsp;Username" type="text" class="form-control" name="uname" id="uname" ngModel >
+  <br>
+
   <label for="pass">Password</label>
-  <input class="form-control" type="password" id="pass" name="pass" ngModel>
+  <input placeholder="&#xf023;&nbsp;&nbsp;Password" class="form-control" type="password" id="pass" name="pass" ngModel>
+  <br>
+
   </div>
-  <div class="form-group">
-  <button type="submit" class="btn btn-default"><i class="fa fa-power-off"></i>Login</button>
+  <div class="form-group ">
+  <button type="submit" class="btn btn-success">Login</button>
   </div>
 </form>
+</div>

@@ -1,0 +1,31 @@
+.boxed{
+    border: 1px solid #ff7b00;
+    /* transition:1s ease; */
+    padding: 20px;
+    height:400px;
+    box-shadow: 1px 1px 2px black;
+    /* display:flex; */
+    /* justify-content:center; */
+}
+.boxed:hover{
+    transform:scale(1.01);
+    border: 2px solid #ff7b00;
+    transition: .15s ease;
+    box-shadow: 3px 3px 3px black;
+}
+input{
+    width:65%;
+    background-color: rgb(243, 243, 243);
+    margin-left:20%;
+    font-size: 16px;
+    font-family:'FontAwesome';
+}
+label{
+    font-family: 'Arial';
+    margin-left: 15%;
+}
+
+button{
+    margin-left:35%;
+    width:30%;
+}

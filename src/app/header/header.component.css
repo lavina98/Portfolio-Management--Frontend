@@ -1,15 +1,27 @@
 .bg-color{
-    background-color:  #00007f ;
+    background-color:  #0034c4 ;
 }
 .navbar{
     border-radius: 0px;
     height:40px;
-    box-shadow:0px 1px 1px #1a1a1a;
+    box-shadow:0px 2px 3px #000000;
 }
 li{
     font-size: 17px;
 }
 .row{
     width:100%;
+}
+.dropdown-menu{
+    min-width: 160px;
+    line-height:20px;
+    /* background-color: #1a1a1a; */
+    padding:0px;   
+}
+.fcol{
+    color:whitesmoke;
+}
+.fa{
+    font-size: 14px;
 }
 

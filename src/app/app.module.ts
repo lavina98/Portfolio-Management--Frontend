@@ -29,6 +29,8 @@ import { UserService } from './user.service';
 import { RegisterComponent } from './register/register.component';
 import { PortfolioService } from './portfolio.service';
 import { UserStockService } from './user-stock.service';
+import { PiechartComponent } from './piechart/piechart.component';
+import { DonutchartComponent } from './donutchart/donutchart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +49,9 @@ import { UserStockService } from './user-stock.service';
     TransactionItemComponent,
     LoginComponent,
     RegisterComponent,
+    PiechartComponent,
+    DonutchartComponent,
+    
   ],
   imports: [
     BrowserModule,
