@@ -33,9 +33,17 @@
         <div class="row">
         <div class="col-sm-3"><label for="stock" >Select Stock</label></div>
         <div class="col-sm-2">
+            <div *ngIf="buy">
                 <select name="stock" id="stock"  ngModel>
-                        <option *ngFor="let s of stockList" [value]="s.symbol">{{s.name}}</option>
+                        <option *ngFor="let s of stockList" [value]="s.symbol" >{{s.name}}</option>
                 </select>
+            </div>
+            <div *ngIf="!buy">
+                    <select name="ustock" id="ustock"  ngModel>
+                            <option *ngFor="let s of uStockList" [value]="s.sName" >{{s.sName}}</option>
+                    </select>
+                </div>
+
         </div>
         
     </div>

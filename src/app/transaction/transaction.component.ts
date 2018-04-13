@@ -24,8 +24,10 @@ export class TransactionComponent implements OnInit {
   transactionArr:Transaction[]=[];
   portfolioList:Portfolio[]=[];
   stockList:Stock[]=[];
+  x:number;
   uStockList:UserStock[]=[];
   t:Transaction=new Transaction();
+  s:UserStock=new UserStock();
   constructor(private transactionService:TransactionService,
               private stockService:StockService,
               private portfolioService:PortfolioService,
@@ -59,17 +61,18 @@ export class TransactionComponent implements OnInit {
       if(f.value.type==='buy')
       {
           this.stockService.getStocks().subscribe(
-            (data:Stock[])=>{this.stockList=data;}
+            (data:Stock[])=>{this.stockList=data;
+              console.log(data);}
           );
           this.buy=true;
+          
       }
       else
       {
         this.userStockService.getAllUserStocks(f.value.pid).subscribe(
           (data:UserStock[])=>{
             this.uStockList=data;
-
-          }
+          console.log(data);}
         );
         this.buy=false;
       }
@@ -79,14 +82,41 @@ export class TransactionComponent implements OnInit {
   }
   addDone(f:NgForm)
   {
-    this.t.price=f.value.price;
-    this.t.quantity=f.value.quantity;
-    this.t.sName=f.value.stock;
-    //console.log(this.t);
-    this.transactionService.addTransaction(this.t).subscribe(
-      (data:Transaction)=>{console.log(data);}
-    );
-   
+      this.t.price=f.value.price;
+      this.t.quantity=f.value.quantity;
+      if(this.buy==true)
+      {
+          this.t.sName=f.value.stock;
+          this.s.sName=f.value.stock;
+          this.s.buyingPrice=f.value.price;
+          this.s.quantity=f.value.quantity;
+          this.transactionService.addTransaction(this.t).subscribe(
+           (_)=>{ this.transactionService.getTransactions().subscribe(
+              (data:Transaction[])=>{this.transactionArr=data;}
+            );}
+          );
+          this.userStockService.addUserStock(this.s,this.t.portfolioId).subscribe();
+      }
+      else
+      {
+        this.t.sName=f.value.ustock;
+        this.transactionService.addTransaction(this.t).subscribe(
+          (_)=>{ this.transactionService.getTransactions().subscribe(
+            (data:Transaction[])=>{this.transactionArr=data;}
+          );}
+        );
+        this.userStockService.getUserStockInAPortfolio(this.t.portfolioId,f.value.ustock).subscribe(
+          (data:UserStock)=>{this.s=data;
+            console.log(this.s);
+             this.s.quantity-=f.value.quantity;
+             this.userStockService.deleteUserStock(this.t.portfolioId,this.s.sId).subscribe();
+             if(this.s.quantity>0)
+                this.userStockService.addUserStock(this.s,this.t.portfolioId).subscribe();
+          });
+        }
+        this.next=false;
+        this.add=false;
+
   }
   deleteOn()
   {
