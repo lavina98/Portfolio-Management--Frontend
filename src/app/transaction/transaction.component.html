@@ -1,38 +1,42 @@
-<div class="cont">
+<div class="container offsets">
     <p class="headings">Transactions</p>
     <hr>
 <button class="btn btn-primary" (click)="addOn()"><i class="fa fa-plus"></i>&nbsp; Add Transaction </button>&nbsp;&nbsp;&nbsp;&nbsp;
 <button class="btn2" (click)="deleteOn()"><i class="fa fa-minus-circle"></i>&nbsp; Delete Transaction </button>
+<br><br>
 <div class="trans" *ngIf="add">
     <form #f="ngForm" (ngSubmit)="addmidDone(f)">
         <p><strong>Transaction ID : {{id}}</strong></p>
         <div class="row">
             <div class="col-sm-3"><label for="pid" >Enter portfolio Id</label></div>
-        <div class="col-sm-2">
-                <select name="pid" id="pid" ngModel>
-                        <option *ngFor="let p of portfolioList" [value]="p.pId">{{p.pName}}</option>
-                    </select>
+            <div class="col-sm-3">
+                    <select name="pid" id="pid" ngModel>
+                            <option *ngFor="let p of portfolioList" [value]="p.pId">{{p.pName}}</option>
+                        </select>
+            </div>
         </div>
         <div class="row">
                 <div class="col-sm-3">            
                     <label for="type" >Enter type of Transaction</label>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                         <select name="type" id="type"  ngModel>
                                 <option value="buy" >Buy</option>
                                 <option value="sell" >Sell</option>
                             </select>
                 </div>
         </div>
+        <br>
         <div class="row">
-                <button type="submit">Next</button>
+                <button style="margin-left:15px;" class="btn btn-warning" type="submit">Next</button>
         </div>
-    </div></form>
+    </form>
+    <br>
  <div *ngIf="next">
     <form #frm="ngForm" (ngSubmit)="addDone(frm)">
         <div class="row">
         <div class="col-sm-3"><label for="stock" >Select Stock</label></div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <div *ngIf="buy">
                 <select name="stock" id="stock"  ngModel>
                         <option *ngFor="let s of stockList" [value]="s.symbol" >{{s.name}}</option>
@@ -49,12 +53,12 @@
     </div>
         <div class="row">
         <div class="col-sm-3"><label for="price" >Enter Stock  Price</label></div>
-        <div class="col-sm-2"><input type="number" id="price" name="price" ngModel></div>
+        <div class="col-sm-3"><input type="number" id="price" name="price" ngModel></div>
         </div>
         
         <div class="row mt-1">
         <div class="col-sm-3"><label for="quantity" >Enter Stock Quantity</label></div>
-        <div class="col-sm-2"><input type="number" id="quantity" name="quantity" ngModel> </div>
+        <div class="col-sm-3"><input type="number" id="quantity" name="quantity" ngModel> </div>
         </div>
         <br>
         <button class="btn btn-success">Confirm</button>

@@ -3,18 +3,18 @@
     <hr>
     <div class="bord">
         <div class="row">
-            <div class="col-sm-1 bold">ID</div>
-            <div class="col-sm-1 bold">Name</div>
-            <div class="col-sm-1 bold">Market</div>
-            <div class="col-sm-1 bold">Quantity</div>
-            <div class="col-sm-1 bold">Bought At</div>
-            <div class="col-sm-1 bold">Curr Price</div>
+            <div class="col-sm-2 text-center bold">ID</div>
+            <div class="col-sm-2 text-center bold">Name</div>
+            <!-- <div class="col text-center-sm-1 bold">Market</div> -->
+            <div class="col-sm-2 text-center bold">Quantity</div>
+            <div class="col-sm-2 text-center bold">Bought At</div>
+            <!-- <div class="col text-center-sm-1 bold">Curr Price</div> -->
 
         </div>
         <app-userstockitem *ngFor="let ustocks of listOfuStocks" [currUserStock]="ustocks" >
         </app-userstockitem>
     </div>
-    <p style="font-weight:bold;margin-top: 20px;">PORTFOLIO NETWORTH : </p>
+    <!-- <p style="font-weight:bold;margin-top: 20px;">PORTFOLIO NETWORTH :  </p> -->
 
     
 </div>

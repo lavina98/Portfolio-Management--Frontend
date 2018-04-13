@@ -12,7 +12,7 @@
     font-family: Calibri;
     color: #ff0000;
     font-size: 16px;
-    background: #e3e3ff;
+    background: inherit;
     padding: 4px ;
     width:30%;
     border: solid #ff0000 1px;
@@ -29,10 +29,13 @@
       width:80px;
   }
   .trans{
-      background-color:rgb(247, 247, 247);
-      padding:20px;
-      border: 1px solid #b4b4b4;
-      margin-top:5px;
+    padding: 10px;
+    background-color: #e9e9e9;
+    width:100%;
+    margin:5px;
+    border-radius: 3px;
+    color: #2d2d2e;
+    font-weight:bold;
   }
 .bord{
     border:2px solid #0075ac;
@@ -43,4 +46,10 @@
 .bolder{
     font-weight:bold;
     font-size:18px;
+}
+select, input{
+    width:100%;
+}
+label{
+    font-weight:normal;
 }
