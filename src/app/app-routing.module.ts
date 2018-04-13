@@ -9,7 +9,7 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { LandingComponent } from "./landing/landing.component";
 const approutes:Routes=[
-      {path:'',component:LandingComponent},
+    //   {path:'',component:LandingComponent},
     // {path:'register',component:RegisterComponent},
     {path:'portfolio',component:HomeComponent},
     {path:'portfolio/:pid',component:PortfolioComponent},
