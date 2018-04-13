@@ -31,6 +31,8 @@ import { PortfolioService } from './portfolio.service';
 import { UserStockService } from './user-stock.service';
 import { PiechartComponent } from './piechart/piechart.component';
 import { DonutchartComponent } from './donutchart/donutchart.component';
+import { LandingComponent } from './landing/landing.component';
+import { OverallPortDataService } from './overall-port-data.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +53,7 @@ import { DonutchartComponent } from './donutchart/donutchart.component';
     RegisterComponent,
     PiechartComponent,
     DonutchartComponent,
+    LandingComponent,
     
   ],
   imports: [
@@ -66,7 +69,8 @@ import { DonutchartComponent } from './donutchart/donutchart.component';
     TransactionService,
     UserService,
   PortfolioService,
-  UserStockService],
+  UserStockService,
+  OverallPortDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

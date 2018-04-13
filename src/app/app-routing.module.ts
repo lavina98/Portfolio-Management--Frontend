@@ -7,15 +7,17 @@ import { PortfolioComponent } from "./portfolio/portfolio.component";
 import { TransactionComponent } from "./transaction/transaction.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
+import { LandingComponent } from "./landing/landing.component";
 const approutes:Routes=[
-    // {path:'',component:LoginComponent},
+      {path:'',component:LandingComponent},
     // {path:'register',component:RegisterComponent},
-    {path:'',component:HomeComponent},
+    {path:'portfolio',component:HomeComponent},
     {path:'portfolio/:pid',component:PortfolioComponent},
     {path:'stocks' ,component:StockListComponent ,
             children:[{path:':id',component:StockDetailComponent}]
     },
-    {path:'transaction' ,component:TransactionComponent }
+    {path:'transaction' ,component:TransactionComponent },
+    { path: 'landing' , component:LandingComponent}
 ];
 @NgModule({
 

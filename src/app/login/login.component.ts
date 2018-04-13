@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
         if(this.u.password===f.value.pass)
         {
           console.log('true');
-          // this.router.navigate(['/home']);
+          this.router.navigate(['/portfolio']);
+          
         }
       else
         console.log('false');
@@ -47,6 +48,10 @@ export class LoginComponent implements OnInit {
           this.forgot=false;
     });
    
+  }
+  changePath()
+  {
+
   }
 
 }

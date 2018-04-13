@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from '../portfolio.service';
 import { Portfolio } from '../porfolio.model';
+import { OverallPortDataService } from '../overall-port-data.service';
 
 @Component({
   selector: 'app-piechart',
@@ -24,14 +25,12 @@ export class PiechartComponent implements OnInit {
       console.log(e);
     }
   
-  constructor(private port:PortfolioService) { }
+  constructor(private port:PortfolioService, private overallPortData: OverallPortDataService) { }
 
   ngOnInit() {
-  //   this.port.getAllPortfolios.subscribe(
-  //     (data:Portfolio[]) =>{
-  //       this.pieChartLabels 
-  //     }
-  //   );
+    this.overallPortData.getIds().subscribe(
+      (data:any) => { this.pieChartLabels = data;}
+    );
   }
 
 }

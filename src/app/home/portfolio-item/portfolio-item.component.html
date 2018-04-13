@@ -1,8 +1,12 @@
-<div *ngIf="delete">
-  <button type="submit" (click)="deletePortfolio()">X</button>
-</div>
-<ul class="list-inline row" (click)="pathChange()">
-    <li class="list-inline-item col-sm-2 text-center">{{portfolio.pId}}</li>
-    <li class="list-inline-item col-sm-3 text-center">{{portfolio.pName}}</li>
-    <li class="list-inline-item col-sm-3 text-center">{{portfolio.pWorth}}</li>
+<div class="row">
+  <ul class="list-inline col-sm-10" (click)="pathChange()">
+      <li class="list-inline-item col-sm-2 text-center">{{portfolio.pId}}</li>
+      <li class="list-inline-item col-sm-3 text-center">{{portfolio.pName}}</li>
+      <li class="list-inline-item col-sm-3 text-center">{{portfolio.pWorth}}</li>
   </ul>
+  <ul class="list-inline col-sm-1">
+      <li *ngIf="delete">
+          <button class="btn btn-danger" type="submit" (click)="deletePortfolio()"><i class="fa fa-trash"></i></button>
+      </li>
+  </ul>
+</div>
