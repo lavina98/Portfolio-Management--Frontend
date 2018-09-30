@@ -10,7 +10,7 @@ import { StockItemComponent } from './stock-list/stock-item/stock-item.component
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { StockDetailComponent } from './stock-list/stock-detail/stock-detail.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { StockService } from './stock.service';
 import { PortfolioComponent } from './portfolio/portfolio.component';
@@ -18,7 +18,6 @@ import { UserstockitemComponent } from './portfolio/userstockitem/userstockitem.
 import { PortfolioItemComponent } from './home/portfolio-item/portfolio-item.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { HeaderComponent } from './header/header.component';
-import { ChartsModule } from 'ng2-charts';
 import { CharttestComponent } from './charttest/charttest.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { TransactionItemComponent } from './transaction/transaction-item/transaction-item.component';
@@ -33,6 +32,7 @@ import { PiechartComponent } from './piechart/piechart.component';
 import { DonutchartComponent } from './donutchart/donutchart.component';
 import { LandingComponent } from './landing/landing.component';
 import { OverallPortDataService } from './overall-port-data.service';
+import { ChartsModule } from 'ng2-charts'
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,8 +61,9 @@ import { OverallPortDataService } from './overall-port-data.service';
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    ChartsModule
     
   ],
   providers: [StockService,

@@ -6,6 +6,7 @@ import { Portfolio } from "./porfolio.model";
 import { HttpClient } from "@angular/common/http";
 import { UserService } from "./user.service";
 import { User } from "./user.model";
+import { Observable } from "rxjs/Rx";
 @Injectable()
 export class TransactionService {
     t:Transaction[]=[];
@@ -17,37 +18,33 @@ export class TransactionService {
     }
    
          
-    getTransactions()
+    getTransactions() :Observable<Transaction[]>
     {
         //replace 1000 by this.userService.getUser().id
-       return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions').map(
-           (data:Transaction[])=>{return data;}
-           // this.u=this.userService.getUser();
-       )
+       return this.http.get('//localhost:8080/api/users/'+this.userService.getUser()+'/transactions').map(
+           (data:Transaction[])=>{
+               console.log(data);
+               return data;
+           });
     }
-    addTransaction(t:Transaction )
+    addTransaction(t:Transaction):any
     {
-        return this.http.post('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions',t).map(
-            (data:Transaction)=>{return data;}
+        return this.http.post('//localhost:8080/api/users/'+this.userService.getUser()+'/transactions',t).map(
+            (data:Transaction)=>{
+                console.log(data);
+                return data;}
         );
     }
-    updateTransaction(t:Transaction)
+    deleteTransaction(tid:number):any
     {
-        return this.http.put('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions'+t.tId,t).map(
-            (data:Transaction)=>{return data;}
-        );
+        return this.http.delete('//localhost:8080/api/users/'+this.userService.getUser()+'/transactions/'+tid).map(
+            (data:any)=>{
+                console.log('successful deletion');
+                console.log(data);
+                return data;
+            }
+        )
     }
-    deleteTransaction(tid:number)
-    {
-        return this.http.delete('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions/'+tid).map(
-            (data:Transaction)=>{return data;}
-        );
-    }
-    getTransaction(tid:number)
-    {
-        return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/transactions/'+tid).map(
-            (data:Transaction)=>{return data;}
-        );
-    }
+
 
 }

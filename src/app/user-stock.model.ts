@@ -3,11 +3,11 @@ import { Portfolio } from "./porfolio.model";
 
 export class UserStock
 {
-    sId:number;
-    sName:string;
+    s_id:number;
+    s_name:String;
     quantity:number;
-    buyingPrice:number;
-    portfolio:Portfolio;
+    price:number;
+    p_id:number;
 
     constructor()
     {

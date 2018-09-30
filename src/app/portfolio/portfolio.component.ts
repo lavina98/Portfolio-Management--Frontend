@@ -26,7 +26,7 @@ export class PortfolioComponent implements OnInit {
         // this.portfolio=this. investmentService.getPortfolio(this.id);
       }
     );
-    this.userStockService.getAllUserStocks(this.pid).subscribe(
+    this.userStockService.getUserStocks(this.pid).subscribe(
       (data:UserStock[])=>{this.listOfuStocks=data;}
     );
   }

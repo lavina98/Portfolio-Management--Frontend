@@ -21,5 +21,13 @@ export class StockItemComponent implements OnInit {
   {
     this.router.navigate(['/stocks',this.currstock.symbol]);
   }
+  condition()
+  {
+    let diff=this.currstock.currprice-this.currstock.refprice;
+    if(diff>0)
+      return true;
+    else
+      return false;
+  }
 
 }

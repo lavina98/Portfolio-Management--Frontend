@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from '../stock.model';
 import { StockService } from '../stock.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-stock-list',
@@ -10,12 +11,17 @@ import { StockService } from '../stock.service';
 export class StockListComponent implements OnInit {
 
   list:Stock[]=[];
-  constructor(private stockService:StockService) { }
+  constructor(private stockService:StockService,
+              private http:HttpClient) { }
 
   ngOnInit() {
     this.stockService.getStocks().subscribe(
-      (data:Stock[])=>{this.list=data;}
-    );
+      (data:Stock[])=>{
+       console.log(data);
+            this.list=data;
+            
+          }
+        );
   }
   //getAllStocks()
   // {

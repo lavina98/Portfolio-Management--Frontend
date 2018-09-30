@@ -2,7 +2,7 @@ export class User {
     id: number;
     uname: string;
     password: string;
-    emailId: string;
+    email_id: string;
    
     
     // constructor(id: number ,uname: string ,password: string,emailId:string ) {

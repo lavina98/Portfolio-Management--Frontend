@@ -1,16 +1,16 @@
-<div class="cont">
+<div class="container offsets">
     
     <p class="headings">Stock Library</p>
     <hr>
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-12">
             <!-- <ul class="list-inline row">
                 <li class="list-inline-item col-sm-3">Stock Name</li>
                 <li class="list-inline-item col-sm-3">Market</li>
                 <li class="list-inline-item col-sm-3">Current Price</li>
             </ul> -->
             <div class="main_grid">
-            <app-stock-item class="stock-up" *ngFor="let stock of list" [currstock]="stock" >
+            <app-stock-item  *ngFor="let stock of list" [currstock]="stock" >
             </app-stock-item>
             </div>
         </div>

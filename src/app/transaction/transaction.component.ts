@@ -4,7 +4,7 @@ import { Transaction } from '../transaction.model';
 import { Portfolio } from '../porfolio.model';
 import { StockService } from '../stock.service';
 import { Stock } from "../stock.model";
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { PortfolioService } from '../portfolio.service';
 import { UserService } from '../user.service';
 import { UserStockService } from '../user-stock.service';
@@ -28,12 +28,14 @@ export class TransactionComponent implements OnInit {
   uStockList:UserStock[]=[];
   t:Transaction=new Transaction();
   s:UserStock=new UserStock();
+  addTrans:FormGroup;
   constructor(private transactionService:TransactionService,
               private stockService:StockService,
               private portfolioService:PortfolioService,
               private userStockService:UserStockService,
-              private userService:UserService)
-   {
+              private userService:UserService,
+              formBuilder:FormBuilder)
+   {  
 
    }
 
@@ -45,84 +47,84 @@ export class TransactionComponent implements OnInit {
     this.portfolioService.getAllPortfolios().subscribe(
       (data:Portfolio[])=>{this.portfolioList=data;}
     );
-    
-      
+    this.addTrans=new FormGroup({
+      pid: new FormControl(null),
+      type:new FormControl(null),
+      stockName:new FormControl(null),
+      stockPrice:new FormControl(null),
+      quantity:new FormControl(null)
+    });
+
   }
+
   addOn()
   {
     this.add=true;
     // this.transactionId=this.transactionService.getId();
   }
-  addmidDone(f:NgForm)
-  {
-      console.log(f);
-      this.t.portfolioId=f.value.pid;
-      this.t.type=f.value.type;
-      if(f.value.type==='buy')
-      {
-          this.stockService.getStocks().subscribe(
-            (data:Stock[])=>{this.stockList=data;
-              console.log(data);}
-          );
-          this.buy=true;
-          
-      }
-      else
-      {
-        this.userStockService.getAllUserStocks(f.value.pid).subscribe(
-          (data:UserStock[])=>{
-            this.uStockList=data;
-          console.log(data);}
-        );
-        this.buy=false;
-      }
 
-      
-     this.next=true;
-  }
-  addDone(f:NgForm)
+  sListChange()
   {
-      this.t.price=f.value.price;
-      this.t.quantity=f.value.quantity;
-      if(this.buy==true)
-      {
-          this.t.sName=f.value.stock;
-          this.s.sName=f.value.stock;
-          this.s.buyingPrice=f.value.price;
-          this.s.quantity=f.value.quantity;
-          this.transactionService.addTransaction(this.t).subscribe(
-           (_)=>{ this.transactionService.getTransactions().subscribe(
-              (data:Transaction[])=>{this.transactionArr=data;}
-            );}
-          );
-          this.userStockService.addUserStock(this.s,this.t.portfolioId).subscribe();
-      }
-      else
-      {
-        this.t.sName=f.value.ustock;
-        this.transactionService.addTransaction(this.t).subscribe(
-          (_)=>{ this.transactionService.getTransactions().subscribe(
-            (data:Transaction[])=>{this.transactionArr=data;}
-          );}
-        );
-        this.userStockService.getUserStockInAPortfolio(this.t.portfolioId,f.value.ustock).subscribe(
-          (data:UserStock)=>{this.s=data;
-            console.log(this.s);
-             this.s.quantity-=f.value.quantity;
-             this.userStockService.deleteUserStock(this.t.portfolioId,this.s.sId).subscribe();
-             if(this.s.quantity>0)
-                this.userStockService.addUserStock(this.s,this.t.portfolioId).subscribe();
-          });
-        }
-        this.next=false;
-        this.add=false;
+    console.log('hello detecting changes');
+    console.log(this.addTrans.value);
+    if(this.addTrans.value.type=='buy')
+    {
+    this.stockService.getStocks().subscribe(
+      (data:Stock[])=>{this.stockList=data;
+        console.log(data)
+      });
+      this.buy=true;
+    }
+    else
+    {
+      console.log(this.addTrans.value);
+
+      this.userStockService.getUserStocks(this.addTrans.value.pid).subscribe(
+        (data:UserStock[])=>{this.uStockList=data;}
+      );
+      this.buy=false;
+    }
 
   }
+  transAdd()
+  {
+    console.log(this.addTrans);
+    this.t.p_id=this.addTrans.value.pid;
+    this.t.type=this.addTrans.value.type;
+    this.t.s_name=this.addTrans.value.stockName;
+    this.t.price=this.addTrans.value.stockPrice;
+    this.t.quantity=this.addTrans.value.quantity;
+    this.transactionService.addTransaction(this.t).subscribe(
+      (data:any)=>{console.log(data);
+        this.transactionService.getTransactions().subscribe(
+          (data:Transaction[])=>{this.transactionArr=data;
+          console.log('here syncing new')}
+        );}
+    )
+    this.s.s_name=this.addTrans.value.stockName;
+    this.s.quantity=this.addTrans.value.quantity;
+    this.s.price=this.addTrans.value.stockPrice
+    this.s.p_id=this.addTrans.value.pid;
+    console.log('updating user stock....')
+    this.userStockService.updateUserStock(this.s,this.addTrans.value.type).subscribe(
+      (data:any)=>{
+        console.log('user stock table updated');
+        console.log(data);}
+    )
+    
+    this.add=false;
+  }
+  
+  ngOnChanges()
+  {
+
+  }
+
   deleteOn()
   {
     this.delete=true;
   }
-  deleteDone(f:NgForm)
+  deleteDone()
   {
     this.delete=false;
     this.transactionService.getTransactions().subscribe(

@@ -2,46 +2,28 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { UserStock } from "./user-stock.model";
 import { UserService } from "./user.service";
+import { Observable } from "rxjs/Rx";
 
 @Injectable()
 export class UserStockService
 {
-        constructor(private http:HttpClient,private userService:UserService)
-        {
-
-        }
-        getAllUserStocks(id:number)
+      constructor(private http:HttpClient,private userService:UserService)
       {
-      //  return this.http.get('//localhost:8080//api/users'+this.userService.getUser().id+'/portfolios').map(
-      //       (res:Portfolio[])=>{return res; });
-      return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/'+id+'/userstocks').map(
-          (data:UserStock[])=>{return data;});
+      }
+
+      getUserStocks(id:number):Observable<UserStock[]>
+      {
+         return this.http.get('//localhost:8080/api/users/portfolios/'+id+'/userstocks').map(
+          (data:UserStock[])=>{
+              console.log(data);
+              return data;
+            });
 
       }
-      addUserStock(s:UserStock,id:number)
+      updateUserStock(s:UserStock,type:String)
       {
-            return this.http.post('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/'+id+'/userstocks',s).map(
+            return this.http.post('//localhost:8080/api/userstocks/'+type,s).map(
                 (data:UserStock)=>{return data});
             
       }
-      getUserStock(pid:number,uid:number)
-      {
-        return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/'+pid+'/userstocks/'+uid).map(
-            (data:UserStock)=>{return data});
-      }
-      deleteUserStock(pid:number,uid:number)
-      {
-        return this.http.delete('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/'+pid+'/userstocks/'+uid).map(
-            (data:UserStock)=>{return data});
-      }
-      updateUserStock(pid:number,uid:number,s:UserStock)
-      {
-        return this.http.put('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/'+pid+'/userstocks/'+uid,s).map(
-            (data:UserStock)=>{return data});
-      }
-      getUserStockInAPortfolio(pid:number,uid:String)
-      {
-        return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/'+pid+'/userstocks/'+uid).map(
-            (data:UserStock)=>{return data});
-      }
-    }
+}

@@ -22,10 +22,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.portfolioService.getAllPortfolios().subscribe(
-      (data:Portfolio[])=>{this.portfolioList=data;}
-    );
+      (data:Portfolio[])=>{
+      this.portfolioList=data;
+      console.log('in home component all portfolios');
+      console.log(this.portfolioList);
+    });
     // this.portfolioService.calculateNetworth(this.portfolio.pId).subscribe(
-    //   (data:number)=>{this.portfolio.pWorth=data;}
+    //   (data:number)=>{this.portfolio.pWor000000000000000000000000th=data;}
     // )
       
   }
@@ -36,8 +39,8 @@ export class HomeComponent implements OnInit {
   createP(form:NgForm)
   {
     console.log(form);
-    this.p.pName=form.value.pname;
-    this.p.pWorth=0;
+    this.p.p_name=form.value.pname;
+    this.p.p_worth=0;
     console.log(this.p);
     this.portfolioService.addPortfolio(this.p).subscribe((_) => {
       this.portfolioService.getAllPortfolios().subscribe(

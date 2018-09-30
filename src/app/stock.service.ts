@@ -20,15 +20,16 @@ export class StockService
      }
       getStocks ()
       {
-          return this.http.get('//localhost:8080//api/stocks').map(
+          return this.http.get('//localhost:8080/api/stocks').map(
               (res:Stock[])=>
           {
-              return res;
+              console.log(res);
+             return(res);
           });
       }
       getStock(symbol:String)
       {
-           return this.http.get('//localhost:8080//api/stocks/'+symbol).map(
+           return this.http.get('//localhost:8080/api/stocks/'+symbol).map(
                (res:Stock)=>{return res;}
            );
       }

@@ -20,38 +20,55 @@ export class LoginComponent implements OnInit {
   login(f:NgForm)
   {
       console.log(f);
-      this.userService.getUserByname(f.value.uname).subscribe(
-        (data:User)=> {this.u=data;
-        if(this.u.password===f.value.pass)
-        {
-          console.log('true');
+      console.log(f.value.uname);
+      console.log(f.value.pass);
+      var obj={uname:f.value.uname,password:f.value.pass};
+      this.userService.authUser(obj).subscribe(
+        (data:any)=>{console.log(data);
+        if(!(data=='Incorrect username'||data=='Incorrect username'))
           this.router.navigate(['/portfolio']);
+      
+      },
+        (err:any)=> console.log(err)
+      )
+      // this.userService.getUserByname(f.value.uname).subscribe(
+      //   (data:User)=> {this.u=data;
+      //     console.log(data);
+      //     console.log(this.u);
+      //     if(data==null)
+      //       alert('invalid credentials');
           
-        }
-      else
-      {
-        console.log('false');
-        alert("Incorrect password");
-      }
-        }
-      );
+      //   else if(this.u.password===f.value.pass)
+      //   {
+      //     console.log('true');
+      //     this.router.navigate(['/portfolio']);
+          
+      //   }
+      // else
+      // {
+      //   console.log('false');
+      //   alert("Incorrect password");
+      // }
+      //   },
+      //   (err)=>{console.log('invalid credentials')}
+      // );
   }
   forgotpass()
   {
     this.forgot=true;
   }
-  changePass(f:NgForm)
-  {
-    console.log(f);
-    this.userService.getUserByname(f.value.unameforgot).subscribe(
-      (data:User)=> {this.u=data;
-        this.u.password=f.value.passforgot;
-        this.userService.changePass(this.u).subscribe(
-          (data:User)=> {this.u=data;});
-          this.forgot=false;
-    });
+  // changePass(f:NgForm)
+  // {
+  //   console.log(f);
+  //   this.userService.getUserByname(f.value.unameforgot).subscribe(
+  //     (data:User)=> {this.u=data;
+  //       this.u.password=f.value.passforgot;
+  //       this.userService.changePass(this.u).subscribe(
+  //         (data:User)=> {this.u=data;});
+  //         this.forgot=false;
+  //   });
    
-  }
+  // }
   changePath()
   {
 

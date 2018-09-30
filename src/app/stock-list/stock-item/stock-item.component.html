@@ -1,4 +1,4 @@
-<div (click)="changePath()">
+<div style="height:100%" class="stock-up" (click)="changePath()">
     <div class="row ">
       <div class="col-sm-12 text-center">      
         <p style="font-size:18px;font-weight:bold">{{currstock.name}}</p>      
@@ -7,16 +7,16 @@
     <hr>
     <div class="row">
       <div class="col-sm-12 text-center">
-          <p>Market: {{ currstock.market }}</p>
+          <p>Category: {{ currstock.category }}</p>
       </div>
     </div>
     <hr>
     <div class="row">
       <div class="col-sm-6 text-center bottom-rw">
-        <p>Id: {{currstock.symbol}}</p>
+        <p>Symbol: {{currstock.symbol}}</p>
       </div>
       <div class="col-sm-6 ">
-        <p>Symbol: {{currstock.currprice}}</p>
+        <p>Price: {{currstock.currprice}}</p>
       </div> 
     </div> 
     </div>

@@ -9,7 +9,7 @@ export class OverallPortDataService {
   constructor(private http:HttpClient,private userService:UserService) { }
 
   getIds(){
-    return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/returnid').map(
+    return this.http.get('//localhost:8080//api/users/'+this.userService.getUser()+'/portfolios/returnid').map(
       (res:String[]) => { 
         console.log(res);
         return res; 
@@ -20,7 +20,7 @@ export class OverallPortDataService {
 
 
   getNetWorth(){
-    return this.http.get('//localhost:8080//api/users/'+this.userService.getUser().id+'/portfolios/returnWorth').map(
+    return this.http.get('//localhost:8080//api/users/'+this.userService.getUser()+'/portfolios/returnWorth').map(
       (res:String[]) => { 
         console.log(res);
         return res; 

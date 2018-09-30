@@ -6,7 +6,7 @@
 }
 .main_grid{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-column-gap:15px;
     grid-row-gap:15px;
@@ -22,5 +22,5 @@
     background: linear-gradient(to bottom,  #329932, #198c19);
     border-radius:4px;
     color:rgb(240, 240, 240);
-    box-shadow: 1px 1px 2px #979797;
+    box-shadow: 1px 1px 2px #1a1a1a;
 }

@@ -5,98 +5,90 @@
 <button class="btn2" (click)="deleteOn()"><i class="fa fa-minus-circle"></i>&nbsp; Delete Transaction </button>
 <br><br>
 <div class="trans" *ngIf="add">
-    <form #f="ngForm" (ngSubmit)="addmidDone(f)">
-        <p><strong>Transaction ID : {{id}}</strong></p>
-        <div class="row">
-            <div class="col-sm-3"><label for="pid" >Enter portfolio Id</label></div>
-            <div class="col-sm-3">
-                    <select name="pid" id="pid" ngModel>
-                            <option *ngFor="let p of portfolioList" [value]="p.pId">{{p.pName}}</option>
-                        </select>
+    <form [formGroup]="addTrans" (ngSubmit)="transAdd()">
+            <div class="row">
+                    <div class="col-sm-3"><label for="pid" >Enter portfolio name</label></div>
+                    <div class="col-sm-3">
+                            <select  id="pid" formControlName="pid" (change)="sListChange()">
+                                    <option *ngFor="let p of portfolioList" [value]="p.p_id">{{p.p_name}}</option>
+                                </select>
+                    </div>
             </div>
-        </div>
-        <div class="row">
-                <div class="col-sm-3">            
-                    <label for="type" >Enter type of Transaction</label>
-                </div>
-                <div class="col-sm-3">
-                        <select name="type" id="type"  ngModel>
-                                <option value="buy" >Buy</option>
-                                <option value="sell" >Sell</option>
+            <div class="row">
+                    <div class="col-sm-3">            
+                        <label for="type" >Enter type of Transaction</label>
+                    </div>
+                    <div class="col-sm-3">
+                            <select formControlName="type" id="type" (change)="sListChange()">
+                                    <option value="buy" >Buy</option>
+                                    <option value="sell" >Sell</option>
+                                </select>
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-sm-3"><label for="stock">Select Stock</label></div>
+                    <div class="col-sm-3">
+                        <div *ngIf="addTrans.value.type==='buy'" >
+                            <select  id="stock"  formControlName="stockName">
+                                    <option *ngFor="let s of stockList" [value]="s.name" >{{s.name}}</option>
                             </select>
-                </div>
-        </div>
-        <br>
-        <div class="row">
-                <button style="margin-left:15px;" class="btn btn-warning" type="submit">Next</button>
-        </div>
-    </form>
-    <br>
- <div *ngIf="next">
-    <form #frm="ngForm" (ngSubmit)="addDone(frm)">
-        <div class="row">
-        <div class="col-sm-3"><label for="stock" >Select Stock</label></div>
-        <div class="col-sm-3">
-            <div *ngIf="buy">
-                <select name="stock" id="stock"  ngModel>
-                        <option *ngFor="let s of stockList" [value]="s.symbol" >{{s.name}}</option>
-                </select>
-            </div>
-            <div *ngIf="!buy">
-                    <select name="ustock" id="ustock"  ngModel>
-                            <option *ngFor="let s of uStockList" [value]="s.sName" >{{s.sName}}</option>
-                    </select>
-                </div>
+                        </div>
+                        <div *ngIf="addTrans.value.type==='sell'" >
+                                <select  id="stock"  formControlName="stockName">
+                                        <option *ngFor="let s of uStockList" [value]="s.s_name" >{{s.s_name}}</option>
+                                </select>
+                        </div>
 
-        </div>
-        
-    </div>
-        <div class="row">
-        <div class="col-sm-3"><label for="price" >Enter Stock  Price</label></div>
-        <div class="col-sm-3"><input type="number" id="price" name="price" ngModel></div>
-        </div>
-        
-        <div class="row mt-1">
-        <div class="col-sm-3"><label for="quantity" >Enter Stock Quantity</label></div>
-        <div class="col-sm-3"><input type="number" id="quantity" name="quantity" ngModel> </div>
-        </div>
-        <br>
-        <button class="btn btn-success">Confirm</button>
+                     </div>
+                    
+            </div>
+            <div class="row">
+                    <div class="col-sm-3"><label for="price" >Enter Stock  Price</label></div>
+                    <div class="col-sm-3"><input type="number" id="price" formControlName="stockPrice" ></div>
+            </div>
+                    
+            <div class="row mt-1">
+                    <div class="col-sm-3"><label for="quantity" >Enter Stock Quantity</label></div>
+                    <div class="col-sm-3"><input type="number" id="quantity" formControlName="quantity"> </div>
+            </div>
+             <br>
+            <button type="submit">Submit</button>
+           
     </form>
-</div>
+    </div>
+    <div>
+            <button class="btn btn-success mt-5" *ngIf="delete" type="submit" (click)="deleteDone()">Done</button>
+    </div>
+    <div class="bord mt-4 ">
+            <div class="row ">
+                <div class="col-sm-1 bolder text-center">
+                    TransactionId
+                </div>
+                <div class="col-sm-2 bolder text-center">
+                    Portfolio Name
+                </div>
+                <div class="col-sm-2 bolder text-center">
+                    Transaction Type
+                </div>
+                <div class="col-sm-2 bolder text-center">
+                    Stock Name
+                </div>
+                <div class="col-sm-2 bolder text-center">
+                     Price
+                </div>
+                <div class="col-sm-1 bolder text-center">
+                    Quantity
+                </div>
+                <div class="col-sm-1 bolder text-center" *ngIf="delete">
+                    Delete
+                </div>
+            </div>
+        </div>
+    <div *ngFor="let t of transactionArr">
+            <app-transaction-item  [transaction]="t" [delete]="delete">
+                
+            </app-transaction-item>
+    </div>
 
 </div>
-<div>
-<button class="btn btn-success mt-5" *ngIf="delete" type="submit" (click)="deleteDone()">Done</button>
-</div>
-<div class="bord mt-4 ">
-        <div class="row ">
-            <div class="col-sm-1 bolder text-center">
-                TransactionId
-            </div>
-            <div class="col-sm-2 bolder text-center">
-                Portfolio Id
-            </div>
-            <div class="col-sm-2 bolder text-center">
-                Transaction Type
-            </div>
-            <div class="col-sm-2 bolder text-center">
-                Stock Name
-            </div>
-            <div class="col-sm-2 bolder text-center">
-                 Price
-            </div>
-            <div class="col-sm-1 bolder text-center">
-                Quantity
-            </div>
-            <div class="col-sm-1 bolder text-center" *ngIf="delete">
-                Delete
-            </div>
-        </div>
-    </div>
-<div *ngFor="let t of transactionArr">
-        <app-transaction-item  [transaction]="t" [delete]="delete">
-            
-        </app-transaction-item>
-</div>
-</div>
+    

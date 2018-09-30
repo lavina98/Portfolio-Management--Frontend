@@ -13,24 +13,32 @@ import { UserStock } from '../../user-stock.model';
 export class TransactionItemComponent implements OnInit {
   @Input() transaction:Transaction;
   @Input() delete:boolean;
+  disable:Boolean;
   s:UserStock=new UserStock();
   constructor(private router:Router,private transactionService:TransactionService,
               private userStockService:UserStockService) { }
 
   ngOnInit() {
+    this.disable=false;
+    console.log(this.transaction);
   }
   deleteItem()
   {
-    this.transactionService.deleteTransaction(this.transaction.tId).subscribe();
-    //console.log('Deletion Successful');
-    if(this.transaction.type==='buy')
-    {
-       this.userStockService.getUserStockInAPortfolio(this.transaction.portfolioId,this.transaction.sName).
-       subscribe( (data:UserStock)=>{this.s=data;})
-       this.userStockService.deleteUserStock(this.transaction.portfolioId,this.s.sId).subscribe();
-       this.s.quantity-=this.transaction.quantity;
-       if(this.s.quantity>0)
-            this.userStockService.addUserStock(this.s,this.transaction.portfolioId).subscribe();
-    }
-}
+    this.transactionService.deleteTransaction(this.transaction.t_id).subscribe(
+      (data:any)=>console.log(data)
+    );
+    this.s.s_name=this.transaction.s_name;
+    this.s.price=this.transaction.price;
+    this.s.quantity=this.transaction.quantity;
+    this.s.p_id=this.transaction.p_id;
+    var type=this.transaction.type;
+    if(type=='buy')
+        type='sell';
+    else
+        type='buy';
+    this.userStockService.updateUserStock(this.s,type).subscribe(
+      (data)=>console.log(data)
+    )
+    this.disable=true;
+  }
 }

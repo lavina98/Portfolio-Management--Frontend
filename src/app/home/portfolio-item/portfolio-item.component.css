@@ -6,3 +6,6 @@
     cursor:pointer;
     margin-right:1px;
 }
+.btn :active{
+    background-color: sienna;
+}

@@ -1,15 +1,15 @@
 <div class="row mt-1 ">
   
-  <div class=" col-sm-1 text-center">{{transaction.tId}}</div>
-  <div class="col-sm-2 text-center">{{transaction.portfolioId}}</div>
+  <div class=" col-sm-1 text-center">{{transaction.t_id}}</div>
+  <div class="col-sm-2 text-center">{{transaction.p_name}}</div>
   <div class="col-sm-2 text-center">{{transaction.type}}</div>
   <!-- <li>{{transaction.stock.id}}</li> -->
-  <div class="col-sm-2 text-center">{{transaction.sName}}</div>
+  <div class="col-sm-2 text-center">{{transaction.s_name}}</div>
   <!-- <li>{{transaction.stock.marketName}}</li> -->
   <div class="col-sm-2 text-center">{{transaction.price}}</div>
   <!-- <li>{{transaction.stock.type}}</li> -->
   <div class="col-sm-1 text-center">{{transaction.quantity}}</div>
   <div class="col-sm-1 text-center" *ngIf="delete">
-      <button class="btn btn-danger" type="submit" (click)="deleteItem()">X</button>
+      <button class="btn btn-danger" [disabled]="disable" type="submit" (click)="deleteItem()">X</button>
   </div>
 </div>

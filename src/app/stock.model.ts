@@ -2,7 +2,6 @@ export class Stock
 {
    public symbol:string;
    public name:string;
-   public market:string;
    public category:string;
    public currprice:number;
    public refprice:number;
@@ -11,7 +10,6 @@ export class Stock
    {
        this.symbol=symbol;
        this.name=name;
-       this.market=mname;
        this.category=type;
        this.currprice=cprice;
       this.refprice=ref;
